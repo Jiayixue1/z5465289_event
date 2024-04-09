@@ -14,6 +14,7 @@ import os
 import config as cfg
 import util
 
+import copy
 import pandas as pd
 
 # ----------------------------------------------------------------------------------------
