@@ -105,6 +105,7 @@ def read_prc_csv(tic, start, end, prc_col='Adj Close'):
     # <COMPLETE THIS PART>
     tic_csv = os.path.join(cfg.DATADIR, f'{tic.lower()}_prc.csv')  # get the file path
     df = pd.read_csv(tic_csv, index_col='Date', parse_dates=True)  # read the csv file
+    df = df.sort_index()  # sort the data by index
     df = df.loc[start:end]  # select the data from start to end
     prc_ser = df[prc_col]  # get the column of Adj Close
     prc_ser.dropna()  # drop the null value
@@ -450,7 +451,6 @@ def _test_read_prc_csv():
     tic = 'AAPL'
     ser = read_prc_csv(tic, '2010-01-04', '2010-12-31')
     util.test_print(ser)
-
 
 
 
